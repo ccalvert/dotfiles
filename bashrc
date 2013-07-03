@@ -52,9 +52,6 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 # Load in the git branch prompt script.
 source ~/scripts/.git-prompt.sh
 
-# Colored prompt: user@host dir$ (user and host are blue, directory is red)
-#export PS1='\[\e[1;34m\]\u@\h\[\e[m\] \[\e[0;31m\]\w\[\e[m\] \[\e[1;34m\]\$\[\e[m\] \[\e[0;37m\]'
-export PS1='\[\e[1;34m\]\u@\h\[\e[m\] \[\e[0;31m\]\w\[\e[m\]$(__git_ps1) \[\e[1;34m\]\$\[\e[m\] '
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -66,6 +63,10 @@ if ! shopt -oq posix; then
   fi
 fi
 
+function custom_prompt {
+  # Colored prompt: user@host dir$ (user and host are blue, directory is red)
+  export PS1='\[\e[1;34m\]\u@\h\[\e[m\] \[\e[0;31m\]\w\[\e[m\]$(__git_ps1) \[\e[1;34m\]\$\[\e[m\] '
+}
 
 # Got this platform checking stuff from http://stackoverflow.com/questions/394230/detect-os-from-a-bash-script
 platform='unknown'
@@ -81,11 +82,14 @@ elif [[ "$unamestr" == 'MINGW32_NT-6.1']]; then
 fi
 
 if [[ $platform == 'linux' ]]; then
+  custom_prompt
 elif [[ $platform == 'freebsd' ]]; then
+  custom_prompt
   # Alias to provide colored output from ls at all times
   # See http://superuser.com/questions/232583/color-coding-mac-terminal
   alias ls='ls -G'
 elif [[ $platform == 'macos' ]]; then
+  custom_prompt
   export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
   PATH=$PATH:/usr/local/mysql/bin
 elif [[ $platform =='windows']]; then
