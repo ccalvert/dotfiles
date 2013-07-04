@@ -77,7 +77,7 @@ elif [[ "$unamestr" == 'FreeBSD' ]]; then
   platform='freebsd'
 elif [[ "$unamestr" == 'Darwin' ]]; then
   platform='macos'
-elif [[ "$unamestr" == 'MINGW32_NT-6.1']]; then
+elif [[ "$unamestr" == 'MINGW32_NT-6.1' ]]; then
   platform='windows'
 fi
 
@@ -92,7 +92,7 @@ elif [[ $platform == 'macos' ]]; then
   custom_prompt
   export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
   PATH=$PATH:/usr/local/mysql/bin
-elif [[ $platform =='windows']]; then
+elif [[ $platform == 'windows' ]]; then
   SSH_ENV="$HOME/.ssh/environment"
   source ~/.bash/bash_functions_windows.sh
   check_agent
