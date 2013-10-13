@@ -52,6 +52,11 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 # Load in the git branch prompt script.
 source ~/scripts/.git-prompt.sh
 
+##################################################
+## wordpress.org
+##################################################
+export WPORG_USER='CelticWolfInc'
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
